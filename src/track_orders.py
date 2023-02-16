@@ -32,7 +32,7 @@ class TrackOrders:
                 days_count[day] += 1
             else:
                 days_count[day] = 1
-            
+
         return max(days_count, key=days_count.get)
 
     def get_least_busy_day(self):
