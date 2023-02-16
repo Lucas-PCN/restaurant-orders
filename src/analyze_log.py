@@ -4,17 +4,18 @@ import csv
 def open_file(path):
     if not path.endswith(".csv"):
         raise FileNotFoundError(f"Extensão inválida: {path}")
-    
+
     try:
         data = []
 
         with open(path, "rt") as file:
             for row in csv.reader(file):
                 data.append(row)
-        
+
         return data
     except FileNotFoundError:
         raise FileNotFoundError(f"Arquivo inexistente: {path}")
+
 
 def find_most_ordered_dish(person_name, orders):
     dishes_amounts = {}
@@ -29,6 +30,7 @@ def find_most_ordered_dish(person_name, orders):
     most_ordered_dish = max(dishes_amounts.items(), key=lambda x: x[1])[0]
 
     return most_ordered_dish
+
 
 def how_many_orders(person_name, dish, orders):
     times = {}
@@ -71,6 +73,7 @@ def which_days_never_visited(person_name, orders):
             days_visited_by_someone.add(day)
 
     return all_days - days_visited_by_someone
+
 
 def analyze_log(path_to_file):
     orders = open_file(path_to_file)
